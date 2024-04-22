@@ -37,7 +37,7 @@ userSchema.methods.comparePassword = async function (password) {
   if (!password) throw new Error("Password is required");
   try {
     const result = await bcrypt.compare(password, this.password);
-    console.log("compare result: ", result);
+    // console.log("compare result: ", result);
     return result;
   } catch (error) {
     console.log("error in ComparePassword: ", error.message);

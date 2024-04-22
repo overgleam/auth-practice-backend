@@ -3,13 +3,15 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 require("./models/db");
 
-const User = require("./models/user");
+// const User = require("./models/user");
 const userRouter = require("./routes/user");
+const cors = require("cors");
 
 const app = express();
 
 app.use(express.json());
 app.use(userRouter);
+app.use(cors());
 
 // const test = async (email, password) => {
 //   const user = await User.findOne({ email: email });
