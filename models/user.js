@@ -17,8 +17,9 @@ const userSchema = new mongoose.Schema({
     max: 32,
   },
   avatar: {
-    type: Buffer,
+    type: String,
   },
+  tokens: [{ type: Object }],
 });
 
 userSchema.pre("save", function (next) {
@@ -57,4 +58,4 @@ userSchema.statics.isThisEmailInUse = async function (email) {
   }
 };
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("users", userSchema);

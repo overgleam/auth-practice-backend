@@ -1,6 +1,6 @@
 const express = require("express");
 require("dotenv").config();
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 require("./models/db");
 
 // const User = require("./models/user");
@@ -9,14 +9,19 @@ const cors = require("cors");
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(userRouter);
-app.use(cors());
 
 // const test = async (email, password) => {
-//   const user = await User.findOne({ email: email });
-//   const result = await user.comparePassword(password);
-//   console.log(user + ": and boom :" + result);
+//   try {
+//     console.log(User);
+//     const user = await User.findOne({ email: email });
+//     const result = await user.comparePassword(password);
+//     console.log(user + ": and boom :" + result);
+//   } catch (error) {
+//     console.error(error.message);
+//   }
 // };
 
 // test("charlie3@gmail.com", "1234");
@@ -26,7 +31,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("Server is running on port 1234");
+  console.log("Server is running on port 3000");
 });
-
-//mongodb+srv://dbAlforque:<password>@alforquedb.ucffc44.mongodb.net/?retryWrites=true&w=majority

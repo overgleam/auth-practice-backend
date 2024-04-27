@@ -9,7 +9,7 @@ exports.validateUserSignUp = [
     .withMessage("Name is invalid")
     .isLength({ min: 3, max: 32 })
     .withMessage("Name must be between 3 to 32 characters"),
-  check("email").normalizeEmail().isEmail().withMessage("Email is required"),
+  check("email").normalizeEmail().isEmail().withMessage("Email is Invalid"),
   check("password")
     .trim()
     .not()
@@ -43,7 +43,7 @@ exports.validateUserSignIn = [
 exports.userValidation = (req, res, next) => {
   const result = validationResult(req).array();
   if (result.length) {
-    return res.status(400).json({ success: false, message: result[0].msg });
+    return res.json({ success: false, message: result[0].msg });
   }
   next();
 };
